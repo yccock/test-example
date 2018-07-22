@@ -10,16 +10,23 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.Iterator;
 
 @Controller
 public class IndexController {
 
+    @RequestMapping(value = "login")
+    public String login(HttpServletRequest request) {
+        request.getSession().getAttribute("wdx");
+        return "login";
+    }
+
     @RequestMapping(value = "")
-    @ResponseBody
-    public String index() {
-        return "index page";
+    public String index(HttpServletRequest request) {
+        request.getSession().getAttribute("wdx");
+        return "index";
     }
 
     @RequestMapping(value = "/upload")
@@ -40,5 +47,12 @@ public class IndexController {
         } catch (Exception e) {
             return "{\"success\":false, \"message\":\"上传失败\"}";
         }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "json")
+    public String json() {
+        String res = "{\"success\":\"true\",\"data\":{\"user\":{\"userId\":123,\"userName\":\"test\"},\"order\":[{\"id\":1,\"name\":\"京东\"},{\"id\":2,\"name\":\"天猫\"},{\"id\":3,\"name\":\"苏宁\"}],\"trades\":[{\"id\":546,\"tradeName\":\"语文\"},{\"id\":547,\"tradeName\":\"数学\"}]}}";
+        return res;
     }
 }

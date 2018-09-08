@@ -1,4 +1,4 @@
-package com.test;
+package com.test.base;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerAdapter;
@@ -9,6 +9,13 @@ import java.io.UnsupportedEncodingException;
 
 
 public class ClientHandler extends ChannelHandlerAdapter {
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println(String.format("Channel activate with %s", ctx.channel().remoteAddress()));
+        super.channelActive(ctx);
+    }
+
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         try {
@@ -27,6 +34,6 @@ public class ClientHandler extends ChannelHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        super.exceptionCaught(ctx, cause);
+        ctx.close();
     }
 }

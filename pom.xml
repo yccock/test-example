@@ -13,6 +13,7 @@
         <module>webservice-test</module>
         <module>tools</module>
         <module>netty-test</module>
+        <module>elasticsearch-test</module>
     </modules>
 
     <name>test-example</name>

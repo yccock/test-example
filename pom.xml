@@ -9,12 +9,13 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>jmeter-test</module>
-        <module>webservice-test</module>
-        <module>tools</module>
-        <module>netty-test</module>
-        <module>elasticsearch-test</module>
-        <module>worker-test</module>
+        <module>jmeter-training</module>
+        <module>webservice-training</module>
+        <module>common-util</module>
+        <module>netty-training</module>
+        <module>elasticsearch-training</module>
+        <module>worker-training</module>
+        <module>class-loader</module>
     </modules>
 
     <name>test-example</name>

@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  * json性能： jackson > gson > fastjson
  */
-public class JsonParse {
+public class JsonUtil {
 
     //gson
     private JsonParser googleJsonParse = new JsonParser();

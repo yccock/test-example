@@ -20,7 +20,11 @@
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.test</groupId>
+            <artifactId>common-util</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>

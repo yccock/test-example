@@ -20,6 +20,7 @@
         <http-client.version>4.5.4</http-client.version>
         <logback.version>1.2.3</logback.version>
         <slf4j_version>1.7.25</slf4j_version>
+        <easypoi.version>3.3.0</easypoi.version>
     </properties>
 
     <dependencies>
@@ -94,6 +95,32 @@
             <version>${slf4j_version}</version>
         </dependency>
         <!-- slf4j -->
+
+        <!--easypoi start-->
+        <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-base</artifactId>
+            <version>${easypoi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-web</artifactId>
+            <version>${easypoi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-annotation</artifactId>
+            <version>${easypoi.version}</version>
+        </dependency>
+        <!--easypoi end-->
+
+        <!-- https://mvnrepository.com/artifact/org.javassist/javassist -->
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.23.1-GA</version>
+        </dependency>
+
     </dependencies>
 
     <build>

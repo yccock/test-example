@@ -87,6 +87,7 @@ public class OkhttpLoginHandler {
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
             Response response = chain.proceed(request);
+            String location = response.header("Location");
             if (response.isRedirect()) {
                 logger.warn("login context has been invalid, relogin again");
                 FormBody formBody = new FormBody.Builder()
@@ -94,10 +95,16 @@ public class OkhttpLoginHandler {
                         .add("password", password)
                         .build();
                 Request loginReq = new Request.Builder()
-                        .url(loginUrl)
+                        .url(location)
                         .post(formBody)
                         .build();
                 chain.proceed(loginReq);
+                String reLoginHeader = loginReq.header("Set-Cookie");
+                if (reLoginHeader == null || (reLoginHeader != null && !reLoginHeader.matches("sso\\.test\\.com=.+"))) {
+                    logger.warn("Retry to login failed.");
+                } else {
+                    logger.info("Retry to login success.");
+                }
                 //重新请求
                 response = chain.proceed(request);
                 if (response.isRedirect()) {

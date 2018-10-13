@@ -1,4 +1,4 @@
-package com.test.util;
+package com.test.prop;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

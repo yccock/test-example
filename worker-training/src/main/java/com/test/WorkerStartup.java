@@ -2,13 +2,13 @@ package com.test;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class ScheduleStartup {
+public class WorkerStartup {
 
     public static void main(String[] args) throws InterruptedException {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/spring-config.xml");
-        synchronized (ScheduleStartup.class) {
+        synchronized (WorkerStartup.class) {
             while (true) {
-                ScheduleStartup.class.wait();
+                WorkerStartup.class.wait();
             }
         }
     }

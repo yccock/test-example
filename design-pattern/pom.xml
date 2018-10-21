@@ -9,47 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>worker-training</artifactId>
+    <artifactId>design-pattern</artifactId>
 
-    <name>worker-training</name>
+    <name>design-pattern</name>
     <url>http://www.example.com</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
-        <spring.version>4.3.18.RELEASE</spring.version>
-        <logback.version>1.2.3</logback.version>
-        <slf4j.version>1.7.5</slf4j.version>
+        <jdk.version>1.8</jdk.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.test</groupId>
-            <artifactId>common-util</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz-jobs</artifactId>
-            <version>2.3.0</version>
-        </dependency>
 
     </dependencies>
 

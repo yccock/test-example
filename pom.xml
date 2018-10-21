@@ -16,6 +16,7 @@
         <module>elasticsearch-training</module>
         <module>worker-training</module>
         <module>class-loader</module>
+        <module>design-pattern</module>
     </modules>
 
     <name>test-example</name>

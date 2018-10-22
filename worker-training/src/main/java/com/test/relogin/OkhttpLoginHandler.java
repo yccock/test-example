@@ -56,12 +56,14 @@ public class OkhttpLoginHandler {
                     String loginCookie = url.getHost();
                     //这里可以做cookie传递，保存操作
                     Map<String, List<Cookie>> cookieMap = new HashMap<String, List<Cookie>>();
+                    @Override
                     public void saveFromResponse(HttpUrl httpUrl, List<Cookie> list) {
                         if (httpUrl.host().equals(loginCookie)) {
                             cookieMap.put(httpUrl.host(), list);
                         }
                     }
 
+                    @Override
                     public List<Cookie> loadForRequest(HttpUrl httpUrl) {
                         List<Cookie> cookies = cookieMap.get(loginCookie);
                         return cookies == null ? new ArrayList<Cookie>() : cookies;
@@ -84,31 +86,35 @@ public class OkhttpLoginHandler {
     }
 
     class LoginCheckInterceptor implements Interceptor {
+        @Override
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
+            //处理请求
             Response response = chain.proceed(request);
-            String location = response.header("Location");
+//            String location = response.header("Location");
+            //页面重定向后，重新登录
             if (response.isRedirect()) {
                 logger.warn("login context has been invalid, relogin again");
                 FormBody formBody = new FormBody.Builder()
                         .add("username", username)
                         .add("password", password)
                         .build();
-                Request loginReq = new Request.Builder()
-                        .url(location)
+                Request loginRequest = new Request.Builder()
+                        .url(loginUrl)
                         .post(formBody)
                         .build();
-                chain.proceed(loginReq);
-                String reLoginHeader = loginReq.header("Set-Cookie");
-                if (reLoginHeader == null || (reLoginHeader != null && !reLoginHeader.matches("sso\\.test\\.com=.+"))) {
-                    logger.warn("Retry to login failed.");
+                //重新登录
+                Response loginResponse = chain.proceed(loginRequest);
+                String responseCookieHeader = loginResponse.header("Set-Cookie");
+                if (responseCookieHeader == null ) {
+                    logger.warn("Retry to login failed, response headers:{}", loginResponse.headers().toString());
                 } else {
                     logger.info("Retry to login success.");
-                }
-                //重新请求
-                response = chain.proceed(request);
-                if (response.isRedirect()) {
-                    logger.error("retry login failed, code:{}", response.code());
+                    //登录后重新请求
+                    response = chain.proceed(request);
+                    if (response.isRedirect()) {
+                        logger.error("retry login failed, code:{}", response.code());
+                    }
                 }
             }
             return response;

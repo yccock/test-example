@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.test.observer.observer.Observer</OriginalElement>
+  <nodes>
+    <node x="0.0" y="295.0">com.test.observer.observer.Observer</node>
+    <node x="0.0" y="398.0">com.test.observer.observer.ObserverA</node>
+    <node x="0.0" y="0.0">com.test.observer.subject.Subject</node>
+    <node x="58.0" y="173.0">com.test.observer.subject.ConcreteSubject</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.test.observer.observer.ObserverA" target="com.test.observer.observer.Observer">
+      <point x="0.0" y="-38.5" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="com.test.observer.subject.ConcreteSubject" target="com.test.observer.subject.Subject">
+      <point x="0.0" y="-38.5" />
+      <point x="0.0" y="61.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="51.0" y="242.0" />
+  <SelectedNodes>
+    <node>com.test.observer.observer.Observer</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

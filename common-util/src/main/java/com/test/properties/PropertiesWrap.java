@@ -1,4 +1,4 @@
-package com.test.prop;
+package com.test.properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,13 +7,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class PropertiesParser {
+public class PropertiesWrap {
 
-    private static final Logger logger = LoggerFactory.getLogger(PropertiesParser.class);
+    private static final Logger logger = LoggerFactory.getLogger(PropertiesWrap.class);
 
-    Properties properties;
+    private Properties properties;
 
-    public PropertiesParser(String propPath) {
+    public PropertiesWrap(String propPath) {
         try {
             this.load(propPath);
         } catch (IOException e) {
@@ -28,6 +28,11 @@ public class PropertiesParser {
     }
 
     public String getStringProperty(String key){
-        return properties.getProperty(key);
+        return this.properties.getProperty(key);
+    }
+
+    public Integer getIntegerProperty(String key){
+        String property = this.properties.getProperty(key);
+        return property == null ? 0 : Integer.parseInt(property);
     }
 }

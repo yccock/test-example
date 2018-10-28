@@ -7,7 +7,7 @@ import java.util.Set;
 public class UnLoadClassTest {
 
     public static void test() throws IOException, CustomException {
-        String lib = System.getProperty("user.dir") + File.separator + "class-loader" + File.separator + "lib";
+        String lib = System.getProperty("user.dir") + File.separator + "java-training" + File.separator + "lib";
         File libFile = new File(lib);
         while (true) {
             SimpleClassLoader classLoader = new SimpleClassLoader();

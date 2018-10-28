@@ -15,7 +15,7 @@
         <module>netty-training</module>
         <module>elasticsearch-training</module>
         <module>worker-training</module>
-        <module>class-loader</module>
+        <module>java-training</module>
         <module>design-pattern</module>
     </modules>
 

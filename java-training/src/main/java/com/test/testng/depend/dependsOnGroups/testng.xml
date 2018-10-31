@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="TestDependency">
+
+    <test name="TestCase1">
+
+        <classes>
+            <class
+                    name="com.test.testng.depend.dependsOnGroups.TestApp">
+            </class>
+            <class
+                    name="com.test.testng.depend.dependsOnGroups.TestDatabase">
+            </class>
+            <class
+                    name="com.test.testng.depend.dependsOnGroups.TestServer">
+            </class>
+        </classes>
+
+    </test>
+
+</suite>

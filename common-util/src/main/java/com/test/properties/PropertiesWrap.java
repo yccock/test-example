@@ -35,4 +35,9 @@ public class PropertiesWrap {
         String property = this.properties.getProperty(key);
         return property == null ? 0 : Integer.parseInt(property);
     }
+
+    public boolean getBooleanProperty(String key){
+        String property = this.properties.getProperty(key);
+        return property == null ? false :Boolean.parseBoolean(property);
+    }
 }

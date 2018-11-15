@@ -79,7 +79,7 @@ public class SimpleClassLoader extends URLClassLoader {
         if (!file.getName().endsWith(".jar")) {
             return;
         }
-//        URL url = new URL("file", null, file.getCanonicalPath());
+//        SERVER_URL url = new SERVER_URL("file", null, file.getCanonicalPath());
         URL url = new URL(String.format("jar:file:%s!/", file.getAbsolutePath()));
         URLConnection urlConnection = url.openConnection();
         // 打开并缓存文件url连接

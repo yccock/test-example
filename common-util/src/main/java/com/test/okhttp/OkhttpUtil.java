@@ -18,6 +18,7 @@ public class OkhttpUtil {
     public enum ContentType{
         FORM("application/x-www-form-urlencoded"),
         FILE("multipart/form-data"),
+        XML("application/xml"),
         JSON("application/json");
 
         private String value;
@@ -82,6 +83,9 @@ public class OkhttpUtil {
         } else if (ContentType.JSON.equals(contentType)){
             MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
             requestBody = RequestBody.create(mediaType, gson.toJson(datas));
+        } else if (ContentType.XML.equals(contentType)){
+            // MediaType mediaType = MediaType.parse("application/xml");
+            // requestBody = RequestBody.create(mediaType, gson.toJson(datas));
         }
         Request request;
         switch (httpMethod) {

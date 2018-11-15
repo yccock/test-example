@@ -24,7 +24,7 @@ public class JenkinsHttpApi {
     public static final String SERVER_URL = "http://192.168.202.132/jenkins";
 
     static {
-        headerMap.put("Authorization", "Basic " + Base64.getUrlEncoder().encodeToString("username:password".getBytes()));
+        headerMap.put("Authorization", "Basic " + Base64.getUrlEncoder().encodeToString("admin:12345".getBytes()));
     }
 
     public static boolean createJob(String jobName, String jobXml){

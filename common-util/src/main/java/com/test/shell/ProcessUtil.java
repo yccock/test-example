@@ -29,8 +29,9 @@ public class ProcessUtil {
             while ((line = br.readLine()) != null) {
                 sb.append(line).append(SEPARATOR);
             }
-            int exitValue = process.waitFor();
-            if (exitValue == 0) {
+            process.waitFor();
+            int exitValue = process.exitValue();
+            if (exitValue != 0) {
                 LOGGER.error(String.format("failed to execute: {}, exitCode: {}", builder.command(), exitValue));
             }
         } catch (Exception e) {

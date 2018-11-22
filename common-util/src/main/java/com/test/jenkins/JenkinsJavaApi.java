@@ -15,13 +15,15 @@ public class JenkinsJavaApi {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JenkinsJavaApi.class);
 
-    public static final String SERVER_URL = "http://192.168.202.132/jenkins";
+    // public static final String SERVER_URL = "http://192.168.202.132/jenkins";
+    public static final String SERVER_URL = "http://192.168.171.197:8090";
+
     public static final String USERNAME = "admin";
-    public static final String PASSWORD = "12345";
+    public static final String PASSWORD = "JD0832@b1";
 
     private static JenkinsServer jenkinsServer;
 
-    static{
+    static {
         try {
             jenkinsServer = new JenkinsServer(new URI(SERVER_URL), USERNAME, PASSWORD);
         } catch (URISyntaxException e) {
@@ -59,10 +61,29 @@ public class JenkinsJavaApi {
         }
     }
 
-    public static Map<String, Job> getJobs(){
+    /**
+     * 获取所有任务
+     * @return
+     */
+    public static Map<String, Job> getJobs() {
         Map<String, Job> jobs = null;
         try {
             jobs = jenkinsServer.getJobs();
+        } catch (IOException e) {
+            LOGGER.error(e.getMessage(), e);
+        }
+        return jobs;
+    }
+
+    /**
+     * 获取某一个tab下的所有任务
+     * @param viewName
+     * @return
+     */
+    public static Map<String, Job> getViewJobs(String viewName) {
+        Map<String, Job> jobs = null;
+        try {
+            jobs = jenkinsServer.getJobs(viewName);
         } catch (IOException e) {
             LOGGER.error(e.getMessage(), e);
         }
@@ -81,6 +102,7 @@ public class JenkinsJavaApi {
 
     /**
      * 获取job的config.xml内容
+     *
      * @param jobName
      * @return
      */
@@ -105,7 +127,5 @@ public class JenkinsJavaApi {
         }
     }
 
-    public static void main(String[] args)  {
-        JenkinsJavaApi.getJobs();
-    }
+
 }

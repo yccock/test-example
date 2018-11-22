@@ -17,6 +17,7 @@
         <module>worker-training</module>
         <module>java-training</module>
         <module>design-pattern</module>
+        <module>unit-testing</module>
     </modules>
 
     <name>test-example</name>

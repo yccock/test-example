@@ -3,8 +3,6 @@ package com.test.testng;
 import org.testng.annotations.Test;
 
 /**
- * @author yccock
- * @date 2018/10/30 21:58
  * @description: 忽略测试
  */
 public class IgnoreTest {

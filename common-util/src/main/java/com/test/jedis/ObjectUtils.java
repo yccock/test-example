@@ -5,11 +5,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-/**
- * @Description: TODO
- * @Author yccock
- * @Date 2018/11/4 10:03
- */
 public class ObjectUtils extends org.apache.commons.lang3.ObjectUtils {
 
     /**

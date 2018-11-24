@@ -2,11 +2,7 @@ package com.test.testng.multiThread;
 
 import org.testng.annotations.Test;
 
-/**
- * @author yccock
- * @date 2018/10/31 21:47
- * @description: TODO
- */
+
 public class MultiThreadOnXml {
 
 

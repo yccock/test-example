@@ -6,11 +6,6 @@ import org.apache.commons.mail.HtmlEmail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * @author yccock
- * @date 2018/11/1 22:08
- * @description: TODO
- */
 public class MailSender {
 
     private static final Logger logger = LoggerFactory.getLogger(MailSender.class);
@@ -39,7 +34,10 @@ public class MailSender {
             htmlEmail.addTo(toAddress);
             //抄送人
             if (ccAddresses != null && ccAddresses.length() > 0) {
-                htmlEmail.addCc(ccAddresses);
+                for (String cc : ccAddresses.split(";")) {
+                    if (cc == null || cc.length() == 0) continue;
+                    htmlEmail.addCc(cc);
+                }
             }
             //邮件编码
             htmlEmail.setCharset("utf-8");

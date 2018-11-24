@@ -4,8 +4,6 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 /**
- * @author yccock
- * @date 2018/10/30 22:34
  * @description: 通过xml进行参数化测试
  */
 public class ParameterTest {

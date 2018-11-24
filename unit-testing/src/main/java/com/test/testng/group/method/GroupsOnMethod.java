@@ -4,11 +4,7 @@ import org.testng.annotations.AfterGroups;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 
-/**
- * @author yccock
- * @date 2018/10/30 22:02
- * @description: 方法分组
- */
+
 public class GroupsOnMethod {
 
     @Test(groups = "server")

@@ -84,8 +84,8 @@ public class OkhttpUtil {
             MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
             requestBody = RequestBody.create(mediaType, gson.toJson(datas));
         } else if (ContentType.XML.equals(contentType)){
-            // MediaType mediaType = MediaType.parse("application/xml");
-            // requestBody = RequestBody.create(mediaType, gson.toJson(datas));
+            MediaType mediaType = MediaType.parse("text/xml;charset=UTF-8");
+            requestBody = RequestBody.create(mediaType, gson.toJson(datas));
         }
         Request request;
         switch (httpMethod) {

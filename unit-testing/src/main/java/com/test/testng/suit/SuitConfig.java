@@ -5,11 +5,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
-/**
- * @author yccock
- * @date 2018/10/30 21:46
- * @description: TODO
- */
 public class SuitConfig {
 
     @BeforeSuite

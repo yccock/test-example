@@ -1,4 +1,4 @@
-package com.test.java;
+package com.test.elasticsearch;
 
 import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.client.transport.TransportClient;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-public class EsBatchInsert {
+public class ESBatchInsert {
 
     private static TransportClient client;
     private static String esIndex;
@@ -40,7 +40,7 @@ public class EsBatchInsert {
 
     private static Properties loadFile() throws IOException {
         Properties properties = new Properties();
-        InputStream inputStream = EsBatchInsert.class.getClassLoader().getResourceAsStream("es.properties");
+        InputStream inputStream = ESBatchInsert.class.getClassLoader().getResourceAsStream("es.properties");
         properties.load(inputStream);
         inputStream.close();
         return properties;
@@ -81,7 +81,7 @@ public class EsBatchInsert {
             map.put("aa", i);
             maps.add(map);
         }
-        EsBatchInsert esUtil = new EsBatchInsert();
+        ESBatchInsert esUtil = new ESBatchInsert();
         esUtil.batchInsert(maps);
         esUtil.shutdown();
     }

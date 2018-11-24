@@ -2,11 +2,7 @@ package com.test.testng.group.clazz;
 
 import org.testng.annotations.Test;
 
-/**
- * @author yccock
- * @date 2018/10/30 22:09
- * @description: 类分组
- */
+
 @Test(groups = "student")
 public class GroupsOnClass1 {
 

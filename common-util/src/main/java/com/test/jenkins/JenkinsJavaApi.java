@@ -3,12 +3,18 @@ package com.test.jenkins;
 import com.offbytwo.jenkins.JenkinsServer;
 import com.offbytwo.jenkins.model.Job;
 import com.offbytwo.jenkins.model.JobWithDetails;
+import org.apache.commons.lang.StringUtils;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Map;
 
 public class JenkinsJavaApi {
@@ -126,6 +132,33 @@ public class JenkinsJavaApi {
             return false;
         }
     }
-
+    public static void updateJob(String url, String jobName, String gitAddress, String branch) throws Exception {
+        try {
+            String jobXml = jenkinsServer.getJobXml(jobName);
+            SAXReader saxReader = new SAXReader();
+            Document document = saxReader.read(new ByteArrayInputStream(jobXml.getBytes("utf-8")));
+            Element rootElement = document.getRootElement();
+            if (StringUtils.isNotBlank(gitAddress)) {
+                Element gitUrlElement = rootElement.element("scm").element("userRemoteConfigs").element("hudson.plugins.git.UserRemoteConfig").element("url");
+                gitUrlElement.setText(gitAddress);
+            }
+            if (StringUtils.isNotBlank(branch)) {
+                Element branchElement = rootElement.element("properties").element("hudson.model.ParametersDefinitionProperty")
+                        .element("parameterDefinitions");
+                List elements = branchElement.elements();
+                for (Object object : elements) {
+                    Element el = (Element) object;
+                    String name = el.element("name").getText();
+                    if (name.equals("branch")) {
+                        el.element("defaultValue").setText(branch);
+                    }
+                }
+            }
+            jenkinsServer.updateJob(jobName, document.asXML());
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("更新jenkins job失败:" + e.getMessage());
+        }
+    }
 
 }

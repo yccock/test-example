@@ -2,11 +2,6 @@ package com.test.testng;
 
 import org.testng.annotations.Test;
 
-/**
- * @author yccock
- * @date 2018/10/31 22:12
- * @description: TODO
- */
 public class TimeOutTest {
 
     @Test(timeOut = 3000)

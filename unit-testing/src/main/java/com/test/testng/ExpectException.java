@@ -3,9 +3,6 @@ package com.test.testng;
 import org.testng.annotations.Test;
 
 /**
- * @author yccock
- * @date 2018/10/30 22:23
- * @description: 异常测试
  * 在我们期望结果为某一个异常的时候
  */
 public class ExpectException {

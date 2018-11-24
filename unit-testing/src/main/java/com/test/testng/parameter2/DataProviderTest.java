@@ -4,8 +4,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
- * @author yccock
- * @date 2018/10/30 22:41
  * @description: DataProvider参数化
  */
 public class DataProviderTest {

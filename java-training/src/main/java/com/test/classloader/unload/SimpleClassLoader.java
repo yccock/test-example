@@ -41,7 +41,8 @@ public class SimpleClassLoader extends URLClassLoader {
         }
 
         //如果类的包名为"java."开始，则有系统默认加载器AppClassLoader加载
-        if (name.startsWith("java.")) {
+        if (name.startsWith("java.") || name.startsWith("javax.")
+                || name.startsWith("com.sun.") || name.startsWith("jdk.")) {
             ClassLoader classLoader = ClassLoader.getSystemClassLoader();
             aClass = classLoader.loadClass(name);
             if (aClass != null) {

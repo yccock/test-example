@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<c3p0-config>
+    <default-config>
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="jdbcUrl">jdbc:mysql://localhost:3306/unit_testing?characterEncoding=utf8</property>
+        <property name="userInfo">root</property>
+        <property name="password">root</property>
+
+        <property name="initialPoolSize">1</property>
+        <!--30秒内未使用即丢弃-->
+        <property name="maxIdleTime">30</property>
+        <property name="maxPoolSize">5</property>
+        <property name="minPoolSize">1</property>
+    </default-config>
+
+    <named-config name="mySource">
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="jdbcUrl">jdbc:mysql://localhost:3306/unit_testing?characterEncoding=utf8</property>
+        <property name="userInfo">root</property>
+        <property name="password">root</property>
+
+        <property name="initialPoolSize">1</property>
+        <!--30秒内未使用即丢弃-->
+        <property name="maxIdleTime">30</property>
+        <property name="maxPoolSize">5</property>
+        <property name="minPoolSize">1</property>
+    </named-config>
+</c3p0-config>

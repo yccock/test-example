@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<easytest:InputTestData xmlns:easytest="urn:org:easetech:easytest:1.0"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="urn:org:easetech:easytest:1.0 testDataSchema.xsd">
+
+    <TestMethod name="simplTestMethod">
+        <Description>
+            Description for this test input instance
+        </Description>
+        <TestRecord id="1">
+            <Description>
+                id1 描述
+            </Description>
+            <InputData>
+                <Entry key="name" value="Daniel" />
+                <Entry key="age" value="25" />
+                <Entry key="expectedOutputs" value="2" />
+            </InputData>
+        </TestRecord>
+        <TestRecord id="2">
+            <Description>
+                id2 描述
+            </Description>
+            <InputData>
+                <Entry key="name" value="kumar" />
+                <Entry key="age" value="32" />
+                <Entry key="expectedOutputs" value="1" />
+            </InputData>
+        </TestRecord>
+        <TestRecord id="3">
+            <Description>
+                id3 描述
+            </Description>
+            <InputData>
+                <Entry key="name" value="christy" />
+                <Entry key="age" value="28" />
+                <Entry key="expectedOutputs" value="0" />
+            </InputData>
+        </TestRecord>
+    </TestMethod>
+
+</easytest:InputTestData>

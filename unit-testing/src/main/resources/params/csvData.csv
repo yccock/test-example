@@ -1,0 +1,3 @@
+simplTestMethod,name,age,expectedOutput
+,wdx1,18,success
+,wdx8,28,success

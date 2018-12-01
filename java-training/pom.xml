@@ -22,6 +22,13 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+            <version>1.8</version>
+            <scope>system</scope>
+            <systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
+        </dependency>
+        <dependency>
             <groupId>com.test</groupId>
             <artifactId>common-util</artifactId>
             <version>1.0-SNAPSHOT</version>

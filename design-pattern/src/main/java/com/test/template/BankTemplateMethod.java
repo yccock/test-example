@@ -18,6 +18,6 @@ public abstract class BankTemplateMethod {
 
         this.transact();
 
-        this.transact();
+        this.evaluate();
     }
 }

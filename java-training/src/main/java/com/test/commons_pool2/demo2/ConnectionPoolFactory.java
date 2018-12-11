@@ -1,4 +1,4 @@
-package com.test.pool.demo2;
+package com.test.commons_pool2.demo2;
 
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;

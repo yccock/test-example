@@ -19,6 +19,8 @@ public class TarUtil {
         FileOutputStream outputStream = new FileOutputStream(tarName);
         BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
         TarArchiveOutputStream archiveOutputStream = new TarArchiveOutputStream(bufferedOutputStream);
+        //防止文件名过长下载失败
+        archiveOutputStream.setLongFileMode(TarArchiveOutputStream.LONGFILE_GNU);
         return archiveOutputStream;
     }
 

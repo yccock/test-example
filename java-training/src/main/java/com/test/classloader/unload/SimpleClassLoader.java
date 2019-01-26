@@ -15,7 +15,7 @@ public class SimpleClassLoader extends URLClassLoader {
     private List<JarURLConnection> cachedJarFiles = new ArrayList<JarURLConnection>();
 
     public SimpleClassLoader() {
-        super(new URL[]{});
+        super(new URL[]{},null);
     }
 
     /**

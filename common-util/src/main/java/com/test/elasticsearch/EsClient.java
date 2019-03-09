@@ -6,10 +6,13 @@ import io.searchbox.client.JestClientFactory;
 import io.searchbox.client.JestResult;
 import io.searchbox.client.config.HttpClientConfig;
 import io.searchbox.core.*;
+import org.apache.poi.ss.formula.functions.T;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class EsClient {
 
@@ -139,6 +142,38 @@ public class EsClient {
     public void closeJestClient(JestClient jestClient) throws Exception {
         if (jestClient != null) {
             jestClient.close();
+        }
+    }
+
+    public void insert(T t) {
+        Index index = new Index.Builder(t).index(indexName).type(typeName).build();
+        try {
+            jestClient.execute(index);
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+        }
+    }
+
+    public void bulkIsert(List<T> list) {
+        if (list.size() == 0) {
+            return;
+        }
+        List<Index> indexList = list.stream()
+                .map(t -> new Index.Builder(t).build())
+                .collect(Collectors.toList());
+        Bulk bulk = new Bulk.Builder()
+                .defaultIndex(indexName)
+                .defaultType(typeName)
+                .addAction(indexList)
+                .build();
+        try {
+            BulkResult result = jestClient.execute(bulk);
+            if (!result.isSucceeded()) {
+                logger.error("write to es error, response code:{}, error info:{}",
+                        result.getResponseCode(), result.getErrorMessage());
+            }
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
         }
     }
 

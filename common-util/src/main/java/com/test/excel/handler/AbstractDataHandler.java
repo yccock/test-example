@@ -1,6 +1,7 @@
 package com.test.excel.handler;
 
 import com.test.excel.anno.ExcelField;
+import com.test.excel.constant.ExcelConstant;
 import com.test.excel.export.AbstractExport;
 import com.test.excel.util.ReflectUtil;
 import org.apache.poi.ss.usermodel.*;
@@ -15,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
 
 public abstract class AbstractDataHandler<T> implements DataHandler<T>{
 
@@ -62,14 +62,17 @@ public abstract class AbstractDataHandler<T> implements DataHandler<T>{
             throw new RuntimeException(" header size is 0");
         }
         Row titleRow = export.addRow();
-        titleRow.setHeightInPoints(30);
-        Cell titleCell = titleRow.createCell(0);
-        titleCell.setCellStyle(export.getStyles().get("title"));
-        titleCell.setCellValue(title);
+        titleRow.setHeightInPoints(ExcelConstant.EXCEL_LINE_HEIGHT_20);
+        for (int i = 0; i < annotationList.size(); i++) {
+            Cell titleCell = titleRow.createCell(i);
+            titleCell.setCellStyle(export.getStyles().get("title"));
+            titleCell.setCellValue(title);
+        }
         sheet.addMergedRegion(new CellRangeAddress(titleRow.getRowNum(), titleRow.getRowNum(),
                 0, headerList.size() - 1));
+
         Row headerRow = export.addRow();
-        headerRow.setHeightInPoints(16);
+        headerRow.setHeightInPoints(ExcelConstant.EXCEL_LINE_HEIGHT_30);
         for (int i = 0; i < headerList.size(); i++) {
             Cell headerCell = headerRow.createCell(i);
             headerCell.setCellStyle(styles.get("header"));

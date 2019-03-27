@@ -1,6 +1,5 @@
 package com.test.excel.entity;
 
-
 import com.test.excel.anno.ExcelField;
 
 public class MdcEntity {
@@ -10,7 +9,7 @@ public class MdcEntity {
     @ExcelField(title="并发数", align=2, sort=10, width = 10)
     private Integer vuser;
 
-    @ExcelField(title="KEY", align=2, sort=20, width = 20)
+    @ExcelField(title="key", align=2, sort=20, width = 20)
     private String umpKey;
 
     @ExcelField(title="ip", align=2, sort=30, width = 20)
@@ -22,47 +21,47 @@ public class MdcEntity {
     @ExcelField(title="cpu load", align=2, sort=50, width = 15)
     private Integer load;
 
-    @ExcelField(title="内存使用率", align=2, sort=60, width = 15)
+    @ExcelField(title="内存使用率", align=2, sort=60, width = 10)
     private Double memUsage;
 
-    @ExcelField(title="磁盘使用率", align=2, sort=70, width = 15)
+    @ExcelField(title="磁盘使用率", align=2, sort=70, width = 10)
     private Double diskUsage;
 
-    @ExcelField(title="磁盘读流量", align=2, sort=80, width = 15)
+    @ExcelField(title="磁盘读流量", align=2, sort=80, width = 10)
     private Double diskRead;
 
-    @ExcelField(title="磁盘写流量", align=2, sort=90, width = 15)
+    @ExcelField(title="磁盘写流量", align=2, sort=90, width = 17)
     private Double diskWrite;
 
-    @ExcelField(title="磁盘繁忙度", align=2, sort=100, width = 15)
+    @ExcelField(title="磁盘繁忙度", align=2, sort=100, width = 17)
     private Double diskBusy;
 
-    @ExcelField(title="网络流入速率", align=2, sort=110, width = 15)
+    @ExcelField(title="网络流入速率", align=2, sort=110, width = 10)
     private Double netIn;
 
-    @ExcelField(title="网络流出速率", align=2, sort=120, width = 15)
+    @ExcelField(title="网络流出速率", align=2, sort=120, width = 10)
     private Double netOut;
 
-    @ExcelField(title="TCP连接数", align=2, sort=130, width = 15)
+    @ExcelField(title="tcp连接数", align=2, sort=130, width = 10)
     private Integer tcpConn;
 
 
-    @ExcelField(title="总调用次数", align=2, sort=140, width = 15)
+    @ExcelField(title="总调用次数", align=2, sort=140, width = 10)
     private String totalCount;
 
-    @ExcelField(title="失败次数", align=2, sort=150, width = 15)
+    @ExcelField(title="失败次数", align=2, sort=150, width = 10)
     private String failCount;
 
-    @ExcelField(title="平均响应时间(ms)", align=2, sort=160, width = 15)
+    @ExcelField(title="平均响应时间(ms)", align=2, sort=160, width = 17)
     private Integer avg;
 
-    @ExcelField(title="tp99(ms)", align=2, sort=170, width = 15)
+    @ExcelField(title="tp99(ms)", align=2, sort=170, width = 17)
     private Integer tp99;
 
-    @ExcelField(title="tp999(ms)", align=2, sort=180, width = 15)
+    @ExcelField(title="tp999(ms)", align=2, sort=180, width = 10)
     private Integer tp999;
 
-    @ExcelField(title="最大响应时间(ms)", align=2, sort=190, width = 15)
+    @ExcelField(title="最大响应时间(ms)", align=2, sort=190, width = 10)
     private Integer max; //最大响应时间
 
     public Long getScriptId() {

@@ -4,7 +4,6 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Method;
 
-
 public class ReflectUtil {
 
     public static Object invokeGetter(Object object, String propertyName) {

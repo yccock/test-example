@@ -11,5 +11,7 @@ public interface Export<T extends DataHandler> {
 
     public Export writeFile(String filename) throws IOException;
 
+    // public Export writeResponse(HttpServletResponse response, String fileName) throws IOException;
+
     public void dispose();
 }

@@ -1,6 +1,7 @@
 package com.test.excel.handler;
 
 import com.test.excel.anno.ExcelField;
+import com.test.excel.constant.ExcelConstant;
 import com.test.excel.entity.MdcEntity;
 import com.test.excel.export.AbstractExport;
 import org.apache.poi.ss.usermodel.Cell;
@@ -12,7 +13,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class MdcDataHandler extends AbstractDataHandler<MdcEntity>{
 
@@ -56,45 +56,44 @@ public class MdcDataHandler extends AbstractDataHandler<MdcEntity>{
 
         //一级标题
         Row titleRow1 = export.addRow();
-        titleRow1.setHeightInPoints(30);
-        Cell titleCell = titleRow1.createCell(0);
-        titleCell.setCellStyle(titleStyle);
-        titleCell.setCellValue(title);
+        titleRow1.setHeightInPoints(ExcelConstant.EXCEL_LINE_HEIGHT_20);
+        for (int i = 0; i < annotationList.size(); i++) {
+            Cell titleCell = titleRow1.createCell(i);
+            titleCell.setCellStyle(titleStyle);
+            titleCell.setCellValue(title);
+        }
         sheet.addMergedRegion(new CellRangeAddress(titleRow1.getRowNum(), titleRow1.getRowNum(), 0, headerList.size() - 1));
 
         //二级标题row
         Row titleRow2 = export.addRow();
-        titleRow2.setHeightInPoints(30);
-
+        titleRow2.setHeightInPoints(ExcelConstant.EXCEL_LINE_HEIGHT_20);
         //设置二级标题前3列header
-        Cell titleCell00 = titleRow2.createCell(0);
-        titleCell00.setCellStyle(headerStyle);
-        titleCell00.setCellValue(headerList.get(0));
+        for (int i = 0; i <3; i++) {
+            Cell titleCell00 = titleRow2.createCell(i);
+            titleCell00.setCellStyle(headerStyle);
+            titleCell00.setCellValue(headerList.get(i));
+        }
 
-        Cell titleCell01 = titleRow2.createCell(1);
-        titleCell01.setCellStyle(headerStyle);
-        titleCell01.setCellValue(headerList.get(1));
-
-        Cell titleCell02 = titleRow2.createCell(2);
-        titleCell02.setCellStyle(headerStyle);
-        titleCell02.setCellValue(headerList.get(2));
-
-        //从第3列开始
+        //从第3-13列开始
         int colNum = 3;
-        Cell titleCell2 = titleRow2.createCell(colNum);
-        titleCell2.setCellStyle(titleStyle);
-        titleCell2.setCellValue("MDC数据");
+        for (int i = 3; i < 13; i++) {
+            Cell titleCell2 = titleRow2.createCell(i);
+            titleCell2.setCellStyle(titleStyle);
+            titleCell2.setCellValue("MDC数据");
+        }
         sheet.addMergedRegion(new CellRangeAddress(titleRow2.getRowNum(), titleRow2.getRowNum(), colNum, 12));
 
         //从第13列开始
         colNum = 13;
-        Cell titleCell3 = titleRow2.createCell(colNum);
-        titleCell3.setCellStyle(titleStyle);
-        titleCell3.setCellValue("UMP数据");
+        for (int i = colNum; i < annotationList.size(); i++) {
+            Cell titleCell3 = titleRow2.createCell(i);
+            titleCell3.setCellStyle(titleStyle);
+            titleCell3.setCellValue("UMP数据");
+        }
         sheet.addMergedRegion(new CellRangeAddress(titleRow2.getRowNum(), titleRow2.getRowNum(), colNum, headerList.size() - 1));
 
         Row headerRow = export.addRow();
-        headerRow.setHeightInPoints(16);
+        headerRow.setHeightInPoints(ExcelConstant.EXCEL_LINE_HEIGHT_30);
         for (int i = 0; i < headerList.size(); i++) {
             Cell headerCell = headerRow.createCell(i);
             headerCell.setCellStyle(styles.get("header"));

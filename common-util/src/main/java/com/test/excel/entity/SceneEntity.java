@@ -5,7 +5,6 @@ import com.test.excel.anno.ExcelField;
 
 import java.util.Date;
 
-
 public class SceneEntity {
 
     @ExcelField(title="任务Id", align=2, sort=1, width = 10)
@@ -44,10 +43,10 @@ public class SceneEntity {
     @ExcelField(title="最大响应时间(ms)", align=2, sort=100, width = 20)
     private Integer max; //最大响应时间
 
-    @ExcelField(title="成功数", align=2, sort=110, width = 20)
+    @ExcelField(title="成功事务数", align=2, sort=110, width = 20)
     private String successCount;
 
-    @ExcelField(title="失败数", align=2, sort=120, width = 20)
+    @ExcelField(title="失败事务数", align=2, sort=120, width = 20)
     private String failCount;
 
     @ExcelField(title="失败率", align=2, sort=130, width = 20)

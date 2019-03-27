@@ -1,5 +1,6 @@
 package com.test.excel.export;
 
+import com.test.excel.constant.ExcelConstant;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.slf4j.Logger;
@@ -11,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public abstract class AbstractExport implements Export{
 
     private static final Logger logger = LoggerFactory.getLogger(AbstractExport.class);
@@ -22,16 +22,21 @@ public abstract class AbstractExport implements Export{
 
     protected Map<String, CellStyle> styles;
 
-    protected int rownum; //当前行号
+    protected int rownum;
 
     private FileOutputStream fos;
 
     protected HashMap<String, List<Object[]>> annotationMap = new HashMap<>();
 
-    public AbstractExport(String sheetName) {
+    public AbstractExport() {
         this.workbook = new SXSSFWorkbook();
-        this.sheet = workbook.createSheet(sheetName);
         this.styles = createStyles(workbook);
+    }
+
+    public Export createSheet(String sheetName){
+        this.sheet = workbook.createSheet(sheetName);
+        this.rownum = 0;
+        return this;
     }
 
     public Map<String, CellStyle> createStyles(Workbook wb) {
@@ -41,12 +46,21 @@ public abstract class AbstractExport implements Export{
         style.setAlignment(CellStyle.ALIGN_CENTER);
         style.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
 
-        style.setFillForegroundColor(IndexedColors.GREEN.getIndex());
+        style.setBorderRight(CellStyle.BORDER_THIN);
+        style.setRightBorderColor(IndexedColors.BLACK.getIndex());
+        style.setBorderLeft(CellStyle.BORDER_THIN);
+        style.setLeftBorderColor(IndexedColors.BLACK.getIndex());
+        style.setBorderTop(CellStyle.BORDER_THIN);
+        style.setTopBorderColor(IndexedColors.BLACK.getIndex());
+        style.setBorderBottom(CellStyle.BORDER_THIN);
+        style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+        //背景色
+        style.setFillForegroundColor(IndexedColors.SEA_GREEN.getIndex());
         style.setFillPattern(CellStyle.SOLID_FOREGROUND);
 
         Font titleFont = wb.createFont();
         titleFont.setFontName("Arial");
-        titleFont.setFontHeightInPoints((short) 12);
+        titleFont.setFontHeightInPoints((short) ExcelConstant.EXCEL_DATA_FONT_SIZE);
         titleFont.setBoldweight(Font.BOLDWEIGHT_BOLD);
         titleFont.setColor(IndexedColors.WHITE.getIndex());
         style.setFont(titleFont);
@@ -55,16 +69,16 @@ public abstract class AbstractExport implements Export{
         style = wb.createCellStyle();
         style.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
         style.setBorderRight(CellStyle.BORDER_THIN);
-        style.setRightBorderColor(IndexedColors.GREY_50_PERCENT.getIndex());
+        style.setRightBorderColor(IndexedColors.BLACK.getIndex());
         style.setBorderLeft(CellStyle.BORDER_THIN);
-        style.setLeftBorderColor(IndexedColors.GREY_50_PERCENT.getIndex());
+        style.setLeftBorderColor(IndexedColors.BLACK.getIndex());
         style.setBorderTop(CellStyle.BORDER_THIN);
-        style.setTopBorderColor(IndexedColors.GREY_50_PERCENT.getIndex());
+        style.setTopBorderColor(IndexedColors.BLACK.getIndex());
         style.setBorderBottom(CellStyle.BORDER_THIN);
-        style.setBottomBorderColor(IndexedColors.GREY_50_PERCENT.getIndex());
+        style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
         Font dataFont = wb.createFont();
         dataFont.setFontName("Arial");
-        dataFont.setFontHeightInPoints((short) 10);
+        dataFont.setFontHeightInPoints((short) ExcelConstant.EXCEL_DATA_FONT_SIZE);
         style.setFont(dataFont);
         styles.put("data", style);
 
@@ -91,11 +105,11 @@ public abstract class AbstractExport implements Export{
         style.cloneStyleFrom(styles.get("data"));
         style.setWrapText(true);
         style.setAlignment(CellStyle.ALIGN_CENTER);
-        style.setFillForegroundColor(IndexedColors.GREEN.getIndex());
+        style.setFillForegroundColor(IndexedColors.SEA_GREEN.getIndex());
         style.setFillPattern(CellStyle.SOLID_FOREGROUND);
         Font headerFont = wb.createFont();
         headerFont.setFontName("Arial");
-        headerFont.setFontHeightInPoints((short) 12);
+        headerFont.setFontHeightInPoints((short) ExcelConstant.EXCEL_DATA_FONT_SIZE);
         headerFont.setBoldweight(Font.BOLDWEIGHT_BOLD);
         headerFont.setColor(IndexedColors.WHITE.getIndex());
         style.setFont(headerFont);
@@ -110,6 +124,14 @@ public abstract class AbstractExport implements Export{
         return this;
     }
 
+    // @Override
+    // public Export writeResponse(HttpServletResponse response, String fileName) throws IOException {
+    //     response.reset();
+    //     response.setContentType("application/octet-stream; charset=utf-8");
+    //     response.setHeader("Content-Disposition", "attachment; filename=" + URLEncoder.encode(fileName, "utf-8"));
+    //     workbook.write(response.getOutputStream());
+    //     return this;
+    // }
 
     public Row addRow() {
         return sheet.createRow(rownum++);

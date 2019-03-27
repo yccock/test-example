@@ -1,6 +1,5 @@
 package com.test.excel.export;
 
-
 import com.test.excel.anno.ExcelField;
 import com.test.excel.handler.DataHandler;
 
@@ -10,11 +9,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-
 public class ExcelExport extends AbstractExport {
 
-    public ExcelExport(String sheetName) {
-        super(sheetName);
+    public ExcelExport() {
+        super();
     }
 
     public ExcelExport initAnnotation(Class<?> clazz){

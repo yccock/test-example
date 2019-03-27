@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class UmpDataHandler extends AbstractDataHandler<UmpEntity>{
 
     private static final Logger logger = LoggerFactory.getLogger(UmpDataHandler.class);

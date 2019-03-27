@@ -1,10 +1,8 @@
 package com.test.excel.entity;
 
-
 import com.test.excel.anno.ExcelField;
 
 import java.util.Date;
-
 
 public class UmpEntity {
 
@@ -13,7 +11,7 @@ public class UmpEntity {
     @ExcelField(title="并发数", align=2, sort=10, width = 10)
     private Integer vuser;
 
-    @ExcelField(title="KEY", align=2, sort=20, width = 30)
+    @ExcelField(title="key", align=2, sort=20, width = 30)
     private String umpKey;
 
     @ExcelField(title="总调用次数", align=2, sort=30, width = 20)
